@@ -3,7 +3,7 @@ import { useState } from "react";
 //we want to manage some state here, bcz we want to manage
 //the data that will change the UI.
 //Therefore we are importing useState
-export default function Player({ initialName, symbol,isActive }) {
+export default function Player({ initialName, symbol,isActive,onChangeName }) {
   const[playerName,setPlayerName]=useState(initialName);
   
     const [isEditing, setIsEditing] = useState(false);
@@ -13,6 +13,10 @@ export default function Player({ initialName, symbol,isActive }) {
    
    //Instead pass a function to your state updating function:
    setIsEditing((editing)=>!editing);
+   if(isEditing){
+    onChangeName(symbol,playerName);
+   }
+  
 
 }
 function handleChange(event){
